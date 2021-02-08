@@ -4,7 +4,8 @@ list_length = 100; probability_range = 1000 # define Length of the list and the 
 sorted_list = list(range(list_length)) # create dummy for sorted list
 list_of_random_numbers = list(range(list_length)) # create dummy for random list
 # create list with random number
-for _ in range(list_length): list_of_random_numbers[_] = random.randint(1, probability_range)
+for _ in range(list_length):
+    list_of_random_numbers[_] = random.randint(1, probability_range)
 # comprehension using: list_of_random_numbers_compr_using = [random.randint(1, probability_range) for i in range(list_length)]
 print("------->: unsorted random List:")
 print(list_of_random_numbers)
