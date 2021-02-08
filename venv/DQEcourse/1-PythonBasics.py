@@ -1,50 +1,26 @@
 #
 import random
-
-# define length of the list
-dieLaenge = 100
-# define the Depth of probability
-WahrscheinlichkeitTiefe = 1000
-# create list with sequence 1, 2, ..., length in it
-dieListe = list(range(0, dieLaenge))
-# create auxiliary list for ordering in cycle
-dieReihenfolge = list(range(0, dieLaenge))
-# create/define dummy list for sorted list
-sortierteListe = list(range(0, dieLaenge))
-# form list with random number
-for i in dieReihenfolge:
-    dieListe[i] = random.randrange(0, WahrscheinlichkeitTiefe)
-# an output for random list
+list_length = 100; probability_range = 1000 # define Length of the list and the Depth of probability
+sorted_list = list(range(list_length)) # create dummy for sorted list
+list_of_random_numbers = list(range(list_length)) # create dummy for random list
+# create list with random number
+for _ in range(list_length): list_of_random_numbers[_] = random.randint(1, probability_range)
+# comprehension using: list_of_random_numbers_compr_using = [random.randint(1, probability_range) for i in range(list_length)]
 print("------->: unsorted random List:")
-print(dieListe)
-print("------->sorted random List:")
+print(list_of_random_numbers)
 #sorting the List
-Tiefstwert = 0
-Maximalwert = WahrscheinlichkeitTiefe
-j = 0
-while j < dieLaenge:
-    Tiefstwert = min(dieListe)
-    sortierteListe[j] = Tiefstwert
-    dieListe.remove(Tiefstwert)
-    j = j + 1
-
-# sum of even
-geradzahlige = 0
-# sum of odd
-ungerade = 0
-
-# calculation of sums for even and odd numbers
-k = 0
-while k < dieLaenge:
-    if sortierteListe[k] % 2 == 0:
-        geradzahlige = geradzahlige + sortierteListe[k]
-    if sortierteListe[k] % 2 == 1:
-        ungerade = ungerade + sortierteListe[k]
-    k = k + 1
-
-print(sortierteListe)
-
-print("The sum of even numbers:")
-print(geradzahlige)
-print("The sum of odd numbers:")
-print(ungerade)
+for i in range(list_length):
+    min_number = min(list_of_random_numbers)
+    sorted_list[i] = min_number
+    list_of_random_numbers.remove(min_number)
+# an output for random and sorted lists
+print("------->sorted random List:")
+print(sorted_list)
+# Sums calculation
+even_sum = 0; odd_sum = 0
+for i in range(list_length):
+    if sorted_list[i] % 2 == 0: even_sum = even_sum + sorted_list[i]
+for i in range(list_length):
+    if sorted_list[i] % 2 == 1: odd_sum = odd_sum + sorted_list[i]
+print("The sum of even numbers:", even_sum)
+print("The sum of odd numbers:", odd_sum)
